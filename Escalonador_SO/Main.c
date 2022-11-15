@@ -93,8 +93,12 @@ void checkDeadLock() {
             for (int j = 0; j < R; j++) {
                 if (Required_R[i][j] != 0) {
                     int WaitingResource = Required_R[i][j] - Available_R[j];
-                    if (WaitingResource > 0)
-                        printf("\n\t| PROCESS %d WAITING FOR %d INSTANCES OF R%d  ^~^ |\n", i + 1, WaitingResource, j + 1);
+                    if (WaitingResource > 0) {
+                        if (All_R[j] >= Required_R[i][j])
+                            printf("\n\t| PROCESS %d IN DEADLOCK MISSING %d INSTANCES OF R%d  >:c |\n", i + 1, WaitingResource, j + 1);
+                        if(All_R[j] < Required_R[i][j])
+                            printf("\n\t| PROCESS %d WAITING FOR %d INSTANCES OF R%d  ^~^ |\n", i + 1, WaitingResource, j + 1);
+                    }
                 }
             }
             printf("\n");

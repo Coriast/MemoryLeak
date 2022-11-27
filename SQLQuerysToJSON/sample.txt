@@ -1,0 +1,12 @@
+
+#sPixOutById 
+select * from fb_servicesystem..PixOut p (nolock)
+where p.PixOutId = 
+option(maxdop 1)
+#Select Pix Out By PixOutId
+
+#sCompanyPerson
+select * from fb_servicesystem..Person p (nolock)
+where personid = 
+option(maxdop 1)
+#Busca por uma person pelo PersonId
